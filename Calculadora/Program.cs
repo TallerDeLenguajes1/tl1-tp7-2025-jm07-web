@@ -3,21 +3,60 @@ using EspacioCalculadora;
 
 Calculadora calc = new Calculadora();
 
-calc.Sumar(10);
-Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+int continuar = 1, op;
+double num;
+string StringOp;
 
-calc.Restar(5);
-Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
-
-calc.Multiplicar(6);
-Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
-
-double num = 3;
-if(num != 0)
+while (continuar != 0)
 {
-    calc.Dividir(num);
-    Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
-}
+    Console.WriteLine("Menú:");
+    Console.WriteLine("1.Sumar | 2.Restar | 3.Multiplicar | 4.Dividir | 5.Limpiar calculadora");
 
-calc.Limpiar();
-Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+    do
+    {
+        Console.WriteLine("Ingrese el número de la operación: ");
+        StringOp = Console.ReadLine();
+        int.TryParse(StringOp, out op);
+    } while (op < 1 || op > 6);
+
+    if (op != 5)
+    {
+        Console.WriteLine("Ingrese un numero: ");
+        while (!double.TryParse(Console.ReadLine(), out num))
+        {
+            Console.WriteLine("Ingrese un número valido.");
+        }    
+    }
+
+    switch (op)
+    {
+        case 1:
+            calc.Sumar(num);
+            Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+            break;
+        case 2:
+            calc.Restar(num);
+            Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+            break;
+        case 3:
+            calc.Multiplicar(num);
+            Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+            break;
+        case 4:
+            if(num != 0)
+            {
+                calc.Dividir(num);
+                Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+            }
+            break;
+        case 5:
+            calc.Limpiar();
+            Console.WriteLine("El valor actual de la calculadora es: " + calc.Resultado);
+            break;
+        default:
+            Console.WriteLine("Numero de operación no enconontrado.");
+    }
+
+    Console.WriteLine("Desea continuar? (SI = 1, NO = 0); ");
+    int.TryParse(Console.ReadLine(), out continuar);
+}
