@@ -6,7 +6,7 @@ namespace EspacioEmpleado
         Administrativo = 1,
         Ingeniero = 2,
         Especialista = 3,
-        nvestigador = 4
+        Ivestigador = 4
     }
     public class Empleado
     {
