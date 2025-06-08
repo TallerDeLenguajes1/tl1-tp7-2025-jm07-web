@@ -61,5 +61,31 @@ namespace EspacioEmpleado
             }
             return 0;
         }
+
+        public double SalarioEmpleado()
+        {
+            double adicional = 0;
+            int antiguedad = AntiguedadEmpleado();
+
+            if (antiguedad < 20)
+            {
+                adicional = SueldoBasico * (antiguedad * 0.01);
+            }
+            else
+            {
+                adicional = SueldoBasico * 0.25;
+            }
+
+            if (Cargo == Cargos.Ingeniero || Cargo == Cargos.Especialista)
+            {
+                adicional *= 1.50;
+            }
+
+            if (EstadoCivil == 'c')
+            {
+                adicional += 150000;
+            }
+            return SueldoBasico + adicional;
+        }
     }
 }
