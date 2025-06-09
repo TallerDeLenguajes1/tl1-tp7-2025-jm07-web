@@ -18,6 +18,25 @@ namespace EspacioEmpleado
         private double SueldoBasico;
         private Cargos Cargo;
 
+        public string NombreCompleto
+        {
+            get => Nombre + " " + Apellido;
+        }
+
+        public char Estado
+        {
+            get => EstadoCivil;
+        }
+
+        public double Sueldo
+        {
+            get => SueldoBasico;
+        }
+        public string CargoDescripcion
+        {
+            get => Cargo.ToString();
+        }
+
         public Empleado(string nom, string ape, DateTime nac, char estadoCivil, DateTime ingreso, double sueldoBase, Cargos cargo)
         {
             Nombre = nom;

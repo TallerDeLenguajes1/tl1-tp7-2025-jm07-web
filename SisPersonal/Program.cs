@@ -13,16 +13,26 @@ foreach (Empleado emp in trabajadores)
 }
 Console.WriteLine("Monto total: " + totalSalarios);
 
-/*int antiguedad = trabajador.AntiguedadEmpleado();
-Console.WriteLine("Antiguedad: " + antiguedad);
+int masProximo = trabajadores[0].AniosFaltantesParaJubilarse();
+int aniosFaltantes, indice = 0;
+for (int i = 0; i < 3; i++)
+{
+    aniosFaltantes = trabajadores[i].AniosFaltantesParaJubilarse();
+    if (aniosFaltantes < masProximo)
+    {
+        masProximo = aniosFaltantes;
+        indice = i;
+    }
+}
 
-int edad = trabajador.EdadEmpleado();
-Console.WriteLine("Edad: " + edad);
-
-int anios = trabajador.AniosFaltantesParaJubilarse();
-Console.WriteLine("Anios faltantes para su jubilacion: " + anios);
-
-double salario = trabajador.SalarioEmpleado();
-Console.WriteLine("Salario final: " + salario);*/
+Console.WriteLine("\nEmpleado mas proximo a jubilarse: ");
+Console.WriteLine(" Nombre completo: " + trabajadores[indice].NombreCompleto);
+Console.WriteLine(" Edad: " + trabajadores[indice].EdadEmpleado());
+Console.WriteLine(" Estado civil: " + trabajadores[indice].Estado);
+Console.WriteLine(" Cargo: " + trabajadores[indice].CargoDescripcion);
+Console.WriteLine(" Antiguedad: " + trabajadores[indice].AntiguedadEmpleado());
+Console.WriteLine(" Anios faltantes para su jubilacion: " + trabajadores[indice].AniosFaltantesParaJubilarse());
+Console.WriteLine(" Salario base: " + trabajadores[indice].Sueldo);
+Console.WriteLine(" Salario final: " + trabajadores[indice].SalarioEmpleado());
 
 
